@@ -1,0 +1,34 @@
+<resources>
+	<string-array name="choixGraphAff">
+		<item>Classique</item>
+        <item>Halloween</item>
+	</string-array>
+	<string-array name="choixGraphValues">
+    	<item>1</item>
+        <item>2</item>
+	</string-array>
+	<string-array name="choixDicoAff">
+		<item>Tout</item>
+        <item>Basique</item>
+        <item>Animaux</item>
+        <item>Geographie</item>
+        <item>Fruits et légumes</item>
+	</string-array>
+	<string-array name="choixDicoValues">
+    	<item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+	</string-array>
+	<string-array name="choixLangAff">
+    	<item>anglais</item>
+        <item>français</item>
+        <item>espagnol</item>
+	</string-array>
+	<string-array name="choixLangValues">
+    	<item>en</item>
+        <item>fr</item>
+        <item>es</item>
+	</string-array>
+ </resources>

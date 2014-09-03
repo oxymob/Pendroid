@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="anthracite">#FF707070</color>
+    <color name="bstory_bleu">#33bfcc</color>
+    <color name="bstory_vert">#33cca6</color>
+    <color name="bstory_rouge">#e53939</color>
+    <color name="bstory_orange">#f0693c</color>
+    <color name="bstory_gris0">#4d4d4d</color>
+    <color name="bstory_gris1">#999999</color>
+    <color name="bstory_gris2">#cccccc</color>
+    <color name="bstory_gris3">#f2f2f2</color>
+        
+</resources>

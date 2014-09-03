@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/optgametitle" >
+        <ListPreference
+            android:entries="@array/choixLangAff"
+            android:entryValues="@array/choixLangValues"
+            android:key="language"
+            android:summary=""
+            android:title="@string/titlelang" />
+        <!--  
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/choixDicoAff"
+            android:entryValues="@array/choixDicoValues"
+            android:key="category"
+            android:summary=""
+            android:title="@string/title" />-->
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/choixGraphAff"
+            android:entryValues="@array/choixGraphValues"
+            android:key="scenes"
+            android:summary=""
+            android:title="@string/titlegraph" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/optpreftitle" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="vibrate"
+            android:summaryOff="@string/vibreuroff"
+            android:summaryOn="@string/vibreuron"
+            android:title="@string/vibreur" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="sound"
+            android:summaryOff="@string/vibreuroff"
+            android:summaryOn="@string/vibreuron"
+            android:title="@string/son" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

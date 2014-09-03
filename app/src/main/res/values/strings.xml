@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hangman Android</string>
+      <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="gagne">You won !</string>
+    <string name="perdu">You lost ! the word was</string>
+    <string name="score">Score</string>
+    <string name="record">High</string>
+    <string name="options">Options</string>
+    <string name="infos">About</string>
+    <string name="quitter">Exit</string>
+    <string name="conception">Made by</string>
+    <string name="graphisme">Graphism</string>
+    <string name="sons">More sounds and musics</string>
+  	<string name="vibreur">Set the vibrator</string> 
+	<string name="vibreuron">On</string> 
+	<string name="vibreuroff">Off</string> 
+   	<string name="title">Category</string>
+   	<string name="titlegraph">Scenes</string>	
+   	<string name="changedico">Dictionary changed !</string>
+   	<string name="optgametitle">Game</string>
+   	<string name="optpreftitle">Preferences</string>
+   	<string name="son">Sound</string>
+   	<string name="titlelang">Languages</string>
+   	
+   	<string name="back_button_label">Back</string>
+    <string name="next_button_label">Next</string>
+
+    <!-- Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] -->
+    <string name="skip_button_label">Skip</string>
+    
+     <string name="credit_trad"><Data>
+ <![CDATA[
+ 		<font color=#e53939>Trad. </font><br><br>Sara Garcia Hernandez &lt;garciah.sara@gmail.com>
+ ]]></Data>
+    </string>
+ </resources>

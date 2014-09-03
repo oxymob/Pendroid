@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/pref" 
+	  android:title="@string/options"
+  	  android:icon="@drawable/conf">
+</item>
+<item android:id="@+id/apropos" 
+   	  android:title="@string/infos"
+      android:icon="@drawable/info">
+</item>
+<item android:id="@+id/quitter" 
+  	  android:title="Quitter"
+  	  android:icon="@drawable/quit">
+</item>	
+</menu>

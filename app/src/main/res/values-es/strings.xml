@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ahorcado Android</string>
+    <string name="gagne">¡Has ganado!</string>
+    <string name="perdu">¡Has perdido! La palabra era </string>
+    <string name="score">Score</string>
+    <string name="record">Récord</string>
+    <string name="options">Opciones</string>
+    <string name="infos">Información</string>
+    <string name="quitter">Salir</string>
+    <string name="conception">Diseño</string>
+    <string name="graphisme">Grafismo</string>
+    <string name="sons">Otros sonidos y músicas</string>
+  	<string name="vibreur">Vibración</string> 
+	<string name="vibreuron">Activo</string> 
+	<string name="vibreuroff">Inactivo</string> 
+   	<string name="title">Categoría</string>
+   	<string name="titlegraph">Fondo</string>	
+   	<string name="changedico">¡Cambio de diccionario!</string>
+   	<string name="optgametitle">Juego</string>
+   	<string name="optpreftitle">Preferencias</string>
+   	<string name="son">Sonido</string>
+   	<string name="titlelang">Idiomas</string>
+ </resources>

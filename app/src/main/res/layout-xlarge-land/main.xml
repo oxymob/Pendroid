@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:id="@+id/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scorebar"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/transparent" >
+
+        <ImageView
+            android:id="@+id/imageflag"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:dither="true"
+            android:scaleType="fitCenter" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/titledico"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageflag"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/titlescore"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/titlebest"
+            android:gravity="center_vertical"
+            android:text="@string/score"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/titlebest"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:text="@string/record"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" >
+        </TextView>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/transparent_panel"
+        android:layout_below="@+id/scorebar"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:dither="true" >
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/transparent_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_above="@+id/gridView"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/transparent"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="32sp" >
+        </TextView>
+    </LinearLayout>
+
+    <com.inmobi.monetization.IMBanner
+        android:id="@+id/banner"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+          android:layout_alignParentBottom="true"
+        adSize="15"
+        appId="36fec99928074399b0feb21093abc818" />
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:columnWidth="150dp"
+        android:gravity="center"
+        android:listSelector="@null"
+        android:numColumns="auto_fit"
+        android:padding="3dp"
+        android:stretchMode="columnWidth" >
+    </GridView>
+
+</RelativeLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hangman Android</string>
+    <string name="gagne">You won !</string>
+    <string name="perdu">You lost ! the word was </string>
+    <string name="score">Score</string>
+    <string name="record">High</string>
+    <string name="options">Options</string>
+    <string name="infos">About</string>
+    <string name="quitter">Exit</string>
+    <string name="conception">Design</string>
+    <string name="graphisme">Graphics</string>
+    <string name="sons">Other sounds and musics</string>
+  	<string name="vibreur">Vibration</string> 
+	<string name="vibreuron">On</string> 
+	<string name="vibreuroff">Off</string> 
+   	<string name="title">Category</string>
+   	<string name="titlegraph">Scenes</string>	
+   	<string name="changedico">Dictionary changed !</string>
+   	<string name="optgametitle">Game</string>
+   	<string name="optpreftitle">Preferences</string>
+   	<string name="son">Sound</string>
+   	<string name="titlelang">Languages</string>
+ </resources>

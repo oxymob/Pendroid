@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Le Pendu Android</string>
+    <string name="gagne">Gagné ! </string>
+    <string name="perdu">Perdu ! Le mot était </string>
+    <string name="score">Score</string>
+    <string name="record">Record</string>
+    <string name="options">Options</string>
+    <string name="infos">Infos</string>
+    <string name="quitter">Quitter</string>
+    <string name="conception">Conception</string>
+    <string name="graphisme">Graphisme</string>
+    <string name="sons">Autres sons et musiques</string>
+  	<string name="vibreur">Vibreur</string> 
+	<string name="vibreuron">Actif</string> 
+	<string name="vibreuroff">Inactif</string> 
+   	<string name="title">Catégorie</string>	
+   	<string name="titlegraph">Scènes</string>	
+	<string name="changedico">Changement de dictionnaire !</string>
+   	<string name="optgametitle">Jeu</string>
+   	<string name="optpreftitle">Préférences</string>
+   	<string name="son">Son</string>
+   	<string name="titlelang">Langues</string>
+</resources>
