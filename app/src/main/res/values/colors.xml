@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="anthracite">#FF707070</color>
+    <color name="anthracite">#ff707070</color>
     <color name="bstory_bleu">#33bfcc</color>
     <color name="bstory_vert">#33cca6</color>
     <color name="bstory_rouge">#e53939</color>

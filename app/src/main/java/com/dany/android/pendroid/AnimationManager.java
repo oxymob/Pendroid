@@ -1,6 +1,5 @@
 package com.dany.android.pendroid;
 
-import com.dany.android.pendroid.R;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 

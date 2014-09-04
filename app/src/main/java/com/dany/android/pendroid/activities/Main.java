@@ -37,21 +37,26 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
 
 public class Main extends AbsNavigationActivity implements IGameHandler, OnItemClickListener {
-	String[] tab_string = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-	Button[] tab_button = new Button[26];
-	ImageView image;
-	GridView gridView;
-	View backgroundView;
-	private TextSwitcher textSwitcher;
-	private GameManager gameManager = null;
+	public final static String[] TAB_STRING = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    private static final String PREFS_LANGUAGE = "language" ;
+    private static final String PREFS_CATEGORY = "category";
+    private static final String PREFS_SCENE = "scenes";
+    private static final String PREFS_SOUND = "sound";
+    private static final String PREFS_VIBRATE = "vibrate";
+    private Button[] vTabButtons = new Button[26];
+	private ImageView vImageGame;
+	private GridView vGridLetters;
+	private View vBackgroundGame;
+	private TextSwitcher vTextWord;
+	private GameManager mGameManager;
 
 	private boolean prefsHasChanged;
-	boolean dicoHasChanged;
+	private boolean dicoHasChanged;
 	private boolean soundOn;
 	private boolean vibrateOn;
 
-	VisualTheme currentTheme;
-	private IMInterstitial interstitial;
+	private VisualTheme mCurrentTheme;
+	private IMInterstitial mInterstitial;
 
 	Animation animWordNext = new TranslateAnimation(
 			Animation.RELATIVE_TO_PARENT, -1.0f,	
@@ -67,16 +72,16 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	SharedPreferences.OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 		public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
 			Log.d("test", key);
-			if ( key.equals("language") || key.equals("category") ) {
+			if ( key.equals(PREFS_LANGUAGE) || key.equals(PREFS_CATEGORY) ) {
 				dicoHasChanged = true;
 			}
 
-			if (key.equals("scenes")) {
+			if (key.equals(PREFS_SCENE)) {
 				prefsHasChanged = true;
 
 				/*	String sTheme = LePendu.getPref().getString("scenes", "2");
 				int theme = Integer.valueOf(sTheme);
-				currentTheme.setCurrent(theme);*/
+				mCurrentTheme.setCurrent(theme);*/
 			}
 		}
 	};
@@ -85,26 +90,25 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		Log.d("test", "oncreate");
 		SoundManager.getInstance().initSounds(getBaseContext());
 		LePendu.getPref().registerOnSharedPreferenceChangeListener(listener);
 
-		backgroundView = (View) findViewById(R.id.background);
-		image = (ImageView) findViewById(R.id.image);
-		textSwitcher = (TextSwitcher) findViewById(R.id.switcher);
-		textSwitcher.setFactory(new ViewFactory() {
-			public View makeView() {
-				LayoutInflater inflater = LayoutInflater.from(getBaseContext());
-				TextView textView = (TextView) inflater.inflate(R.layout.new_word, null);
-				return textView;
-			}
-		});
+		vBackgroundGame = (View) findViewById(R.id.background);
+		vImageGame = (ImageView) findViewById(R.id.image);
+		vTextWord = (TextSwitcher) findViewById(R.id.switcher);
+		vTextWord.setFactory(new ViewFactory() {
+            public View makeView() {
+                LayoutInflater inflater = LayoutInflater.from(getBaseContext());
+                TextView textView = (TextView) inflater.inflate(R.layout.new_word, null);
+                return textView;
+            }
+        });
 
-		gridView = (GridView) findViewById(R.id.gridView);
+		vGridLetters = (GridView) findViewById(R.id.gridView);
 
-		gridView.setAdapter(new ButtonAdapter(this));
-		gridView.setOnItemClickListener(this);
-		gridView.setClickable(false);
+		vGridLetters.setAdapter(new ButtonAdapter(this));
+		vGridLetters.setOnItemClickListener(this);
+		vGridLetters.setClickable(false);
 		init();
 
 		InMobi.initialize(this, "36fec99928074399b0feb21093abc818");
@@ -115,38 +119,43 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-		interstitial = new IMInterstitial(this, "36fec99928074399b0feb21093abc818");
-		interstitial.loadInterstitial();
-		interstitial.setIMInterstitialListener(new IMInterstitialListener() {
-			public void onShowInterstitialScreen(IMInterstitial arg0) {
-				Log.d("interstitial", "onShowInterstitialScreen");
-			}
-			@Override
-			public void onLeaveApplication(IMInterstitial arg0) {
-				Log.d("interstitial", "onLeaveApplication");
+		mInterstitial = new IMInterstitial(this, "36fec99928074399b0feb21093abc818");
+		mInterstitial.loadInterstitial();
+		mInterstitial.setIMInterstitialListener(new IMInterstitialListener() {
+            public void onShowInterstitialScreen(IMInterstitial arg0) {
+                Log.d("mInterstitial", "onShowInterstitialScreen");
+            }
 
-			}
-			@Override
-			public void onDismissInterstitialScreen(IMInterstitial arg0) {
-				Log.d("interstitial", "onDismissInterstitialScreen");
-				finish();
-			}
-			@Override
-			public void onInterstitialLoaded(IMInterstitial arg0) {
-				interstitial = arg0;
-				Log.d("interstitial", "onInterstitialLoaded");
-			}
-			@Override
-			public void onInterstitialInteraction(IMInterstitial arg0, Map<String, String> arg1) {
-				Log.d("interstitial", "onInterstitialInteraction");
+            @Override
+            public void onLeaveApplication(IMInterstitial arg0) {
+                Log.d("mInterstitial", "onLeaveApplication");
 
-			}
-			@Override
-			public void onInterstitialFailed(IMInterstitial arg0, IMErrorCode arg1) {
-				Log.d("interstitial", "onInterstitialFailed");
+            }
 
-			}
-		}); 
+            @Override
+            public void onDismissInterstitialScreen(IMInterstitial arg0) {
+                Log.d("mInterstitial", "onDismissInterstitialScreen");
+                finish();
+            }
+
+            @Override
+            public void onInterstitialLoaded(IMInterstitial arg0) {
+                mInterstitial = arg0;
+                Log.d("mInterstitial", "onInterstitialLoaded");
+            }
+
+            @Override
+            public void onInterstitialInteraction(IMInterstitial arg0, Map<String, String> arg1) {
+                Log.d("mInterstitial", "onInterstitialInteraction");
+
+            }
+
+            @Override
+            public void onInterstitialFailed(IMInterstitial arg0, IMErrorCode arg1) {
+                Log.d("mInterstitial", "onInterstitialFailed");
+
+            }
+        });
 		if (soundOn)
 			SoundManager.getInstance().playSound(1, SoundManager.NEW_GAME);
 		startNewGameSet(null, true);
@@ -159,10 +168,10 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	}
 
 	private void refreshActionBar() {
-		String dico = gameManager.getCurrentCategory().getmDesc();
-		String score = getString(R.string.score) + " : " + gameManager.getCurrentScore();
-		String best = getString(R.string.record) + " : " + gameManager.getBest();
-		String lang = gameManager.getCurrentCategory().getmDico().getDicoLang();
+		String dico = mGameManager.getCurrentCategory().getmDesc();
+		String score = getString(R.string.score) + " : " + mGameManager.getCurrentScore();
+		String best = getString(R.string.record) + " : " + mGameManager.getBest();
+		String lang = mGameManager.getCurrentCategory().getmDico().getDicoLang();
 		
 		int resId=0;
 		if (lang.equals("fr")) resId = R.drawable.flag_france;
@@ -177,7 +186,7 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		//outState.putSerializable("currentTheme", currentTheme);
+		//outState.putSerializable("mCurrentTheme", mCurrentTheme);
 		//outState.putBoolean("dicoHasChanged", dicoHasChanged);
 	}
 
@@ -196,50 +205,49 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	}
 
 	public void init() {
-		if (LePendu.getPref().getBoolean("sound", true))
+		if (LePendu.getPref().getBoolean(PREFS_SOUND, true))
 			soundOn = true;
-		if (LePendu.getPref().getBoolean("vibrate", true))
+		if (LePendu.getPref().getBoolean(PREFS_VIBRATE, true))
 			vibrateOn = true;
-		currentTheme = new VisualTheme();
-		//currentTheme = VisualTheme.getInstance().getCurrent();
-		image.setImageResource(currentTheme.getGameImages()[0]);
-		//backgroundView.setBackgroundResource(currentTheme.getBackground());
+		mCurrentTheme = new VisualTheme();
+		//mCurrentTheme = VisualTheme.getInstance().getCurrent();
+		vImageGame.setImageResource(mCurrentTheme.getGameImages()[0]);
 	}
 
 	@Override
 	public void onBackPressed() {
-		if ((interstitial != null) && ( interstitial.getState() ==IMInterstitial.State.READY))
-			interstitial.show();
+		if ((mInterstitial != null) && ( mInterstitial.getState() ==IMInterstitial.State.READY))
+			mInterstitial.show();
 		else
 			super.onBackPressed();
 	}
 	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		String letter = tab_string[position];
+		String letter = TAB_STRING[position];
 		if (v.isEnabled()) {
 			((TextView ) v).setEnabled(false);
-			gameManager.play(letter);
+			mGameManager.play(letter);
 		}
 	}
 
 	public void startNewGameSet(Category category, boolean mute) {
 		if (soundOn && !mute)
 			SoundManager.getInstance().playSound(1, SoundManager.DICO_CHANGED);
-		gameManager = new GameManager(category);
-		gameManager.setGameHandler(this);
-		//Toast.makeText(LePendu.getContext(), getString(R.string.changedico) + " " + gameManager.getCurrentCategory().getmDesc(), Toast.LENGTH_SHORT).show();
+		mGameManager = new GameManager(category);
+		mGameManager.setGameHandler(this);
+		//Toast.makeText(LePendu.getContext(), getString(R.string.changedico) + " " + mGameManager.getCurrentCategory().getmDesc(), Toast.LENGTH_SHORT).show();
 
-		gameManager.newGame();
+		mGameManager.newGame();
 
-		refreshNewWord(gameManager.newWord());
+		refreshNewWord(mGameManager.newWord());
 		refreshActionBar();
 	}
 
 	private void refreshNewWord(String word) {
-		gridView.setAdapter(new ButtonAdapter(this));
-		textSwitcher.setInAnimation(getBaseContext(), android.R.anim.slide_in_left);
-		textSwitcher.setOutAnimation(getBaseContext(), android.R.anim.slide_out_right);
-		textSwitcher.setText(word);
+		vGridLetters.setAdapter(new ButtonAdapter(this));
+		vTextWord.setInAnimation(getBaseContext(), android.R.anim.slide_in_left);
+		vTextWord.setOutAnimation(getBaseContext(), android.R.anim.slide_out_right);
+		vTextWord.setText(word);
 	}
 
 	/* FROM NAVIGATIONDRAWER
@@ -248,7 +256,7 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	 */
 	@Override
 	public void onCategoryChanged(Category newCategory) {
-		LePendu.getPrefEdit().putString("category", String.valueOf(newCategory.getmRef())).commit();
+		LePendu.getPrefEdit().putString(PREFS_CATEGORY, String.valueOf(newCategory.getmRef())).commit();
 		startNewGameSet(newCategory, false);
 	}
 
@@ -258,37 +266,37 @@ public class Main extends AbsNavigationActivity implements IGameHandler, OnItemC
 	 */
 	@Override
 	public void onGameLost() {
-		gameManager.newGame();
+		mGameManager.newGame();
 		if (this.soundOn)
 			SoundManager.getInstance().playSound(1, SoundManager.YOU_LOST);
-		image.startAnimation(AnimationManager.giveRandomOne(AnimationManager.LOST));
-		Toast.makeText(this, getString(R.string.perdu) + " " + gameManager.getCurrentWord(), Toast.LENGTH_LONG).show();
+		vImageGame.startAnimation(AnimationManager.giveRandomOne(AnimationManager.LOST));
+		Toast.makeText(this, getString(R.string.perdu) + " " + mGameManager.getCurrentWord(), Toast.LENGTH_LONG).show();
 		refreshActionBar();
-		refreshNewWord(gameManager.newWord());
+		refreshNewWord(mGameManager.newWord());
 
-		image.setImageResource(currentTheme.getGameImages()[0]);
+		vImageGame.setImageResource(mCurrentTheme.getGameImages()[0]);
 	} 
 
 	@Override
 	public void onGameWon(int extras) {
-		Toast.makeText(this, getString(R.string.gagne) + " " + gameManager.getCurrentWord(), Toast.LENGTH_LONG).show();
+		Toast.makeText(this, getString(R.string.gagne) + " " + mGameManager.getCurrentWord(), Toast.LENGTH_LONG).show();
 		if (this.soundOn)
 			SoundManager.getInstance().playSound(1, SoundManager.YOU_WIN);
-		image.startAnimation(AnimationManager.giveRandomOne(AnimationManager.WIN));
+		vImageGame.startAnimation(AnimationManager.giveRandomOne(AnimationManager.WIN));
 		if (this.vibrateOn) {
 			Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 			vib.vibrate(500);
 		}
 		refreshActionBar();
-		refreshNewWord(gameManager.newWord());
+		refreshNewWord(mGameManager.newWord());
 
-		image.setImageResource(currentTheme.getGameImages()[0]);
+		vImageGame.setImageResource(mCurrentTheme.getGameImages()[0]);
 	}
 
 	@Override
 	public void onGameResponse(int extras) {
-		textSwitcher.setCurrentText(gameManager.getDisplayedChars());
-		image.setImageResource(currentTheme.getGameImages()[extras]);
+		vTextWord.setCurrentText(mGameManager.getDisplayedChars());
+		vImageGame.setImageResource(mCurrentTheme.getGameImages()[extras]);
 		if (this.soundOn)
 			SoundManager.getInstance().playSound(1, SoundManager.KEY_PRESSED);
 	}

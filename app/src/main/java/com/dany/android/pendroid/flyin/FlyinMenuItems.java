@@ -6,7 +6,6 @@ import com.dany.android.pendroid.activities.ACredits;
 
 public enum FlyinMenuItems {
 	// ITEM_NAME(item_text, item_drawable, not log activity, ald activity, needAuth ,log activity, keyForBundle),
-	//DICO(R.string.changedico, 0, ADicos.class, null),
 	CONFIG(R.string.options, 0, APreferences.class, null),
 	INFOS(R.string.infos, 0, ACredits.class, null);
 

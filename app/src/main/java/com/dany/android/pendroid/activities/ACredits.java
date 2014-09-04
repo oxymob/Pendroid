@@ -7,7 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 public class ACredits extends AbsActionBarActivity {
-	private Animation translate;
+	private Animation mTranslate;
 	private ViewGroup vCredits;
 
 	@Override
@@ -16,8 +16,8 @@ public class ACredits extends AbsActionBarActivity {
 		setContentView(R.layout.activity_credits);
 		vCredits = (ViewGroup) findViewById(R.id.layout_credits);
 		
-		translate = AnimationUtils.loadAnimation(this, R.anim.animation_credits);
-		translate.setRepeatCount(Animation.INFINITE); 
-		vCredits.startAnimation(translate);
+		mTranslate = AnimationUtils.loadAnimation(this, R.anim.animation_credits);
+		mTranslate.setRepeatCount(Animation.INFINITE);
+		vCredits.startAnimation(mTranslate);
 	}
 }

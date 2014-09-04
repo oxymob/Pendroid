@@ -9,7 +9,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
 public class GameManager {
-	String regexpunct = "\\p{Punct} ";
+    private static final String PREFS_RECORD = "record";
+    String regexpunct = "\\p{Punct} ";
 
 	private Dico currentDico;
 	private int currentScore;
@@ -93,7 +94,7 @@ public class GameManager {
 		//currentDico = Dico.initFromPref();
 		//LePendu.getPrefEdit().putString("language", dico.dicoLang).commit();
 		currentScore = 0;//new Score(currentDico.getDicoFile());
-		bestScore = LePendu.getPref().getInt("record"+currentDico.getDicoFile(), 0);
+		bestScore = LePendu.getPref().getInt(PREFS_RECORD +currentDico.getDicoFile(), 0);
 	}
 
 	public void play(String letter) {
@@ -155,7 +156,7 @@ public class GameManager {
 		currentScore += score;
 		if (currentScore > bestScore) {
 			bestScore = currentScore;
-			LePendu.getPrefEdit().putInt("record"+currentDico.getDicoFile(), bestScore);
+			LePendu.getPrefEdit().putInt(PREFS_RECORD+currentDico.getDicoFile(), bestScore);
 			LePendu.getPrefEdit().commit();
 			gameHandler.onBestScore();
 		}

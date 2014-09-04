@@ -56,13 +56,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Main" />
         </activity>
-        <activity
-            android:name=".activities.ADicos"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.Main" />
-        </activity>
     </application>
 
 </manifest>
